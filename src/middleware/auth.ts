@@ -17,8 +17,6 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
     console.log(error);
     return res.status(401).json({ message: "Unauthorized access" });
   }
-
-  console.log(token);
 };
 
 export { auth };

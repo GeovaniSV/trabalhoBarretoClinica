@@ -64,6 +64,7 @@ class UserController {
       return res.status(200).json(users);
     } catch (error) {
       console.log(error);
+      return res.status(500).json({ Message: "Sorry, something went wrong!" });
     }
   };
 }
