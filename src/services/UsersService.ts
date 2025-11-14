@@ -66,11 +66,18 @@ class UserService {
         id: true,
         medico: true,
         paciente: true,
+        email: true,
+        senha: true,
       },
     });
 
     if (!user) {
       return { Error: { message: "Invalid credentials", statusCode: 404 } };
+    }
+
+    const isMatch = await bcrypt.compare(payload.senha, user.senha);
+    if (!isMatch) {
+      return { Error: { message: "Invalid credentials", statusCode: 401 } };
     }
 
     const jwtPayload = {
