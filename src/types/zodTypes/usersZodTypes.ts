@@ -8,7 +8,7 @@ const userZodLogin = z.object({
 const userZodRegister = z.object({
   email: z.email().trim(),
   senha: z.string().trim(),
-  tipo: z.string().trim(),
+tipo: z.enum(["M", "P"]),
   nome: z.string().trim(),
   telefone: z.string().trim(),
   cep: z.string().trim(),

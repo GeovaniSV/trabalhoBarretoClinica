@@ -19,9 +19,9 @@ class UserService {
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(payload.senha, salt);
 
-    let user;
-    if (payload.tipo == "M") {
-      user = await prisma.user.create({
+
+    const newUserMap: Record<string, VoidFunction>  = {
+      "M":async ()=> await prisma.user.create({
         data: {
           email: payload.email,
           senha: hashPassword,
@@ -34,15 +34,8 @@ class UserService {
             },
           },
         },
-      });
-    }
-
-    if (
-      payload.tipo == "P" ||
-      payload.tipo == undefined ||
-      payload.tipo == null
-    ) {
-      user = await prisma.user.create({
+      }),
+      "P":async()=> await prisma.user.create({
         data: {
           email: payload.email,
           senha: hashPassword,
@@ -54,9 +47,12 @@ class UserService {
             },
           },
         },
-      });
+      })
     }
-    return user;
+
+    
+    return newUserMap[payload.tipo]!()
+    
   }
 
   async login(payload: ILogin) {

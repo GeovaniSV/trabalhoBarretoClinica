@@ -5,7 +5,6 @@ const postAgendamentos = z.object({
   pacienteId: z.number().int(),
   procedimentoId: z.number().int(),
   planoDeSaudeId: z.number().int(),
-  dia: z.string(),
 });
 
 export { postAgendamentos };

@@ -4,5 +4,4 @@ export interface IAgendamentos {
   pacienteId: number;
   procedimentoId: number;
   planoDeSaudeId: number;
-  dia: string;
 }

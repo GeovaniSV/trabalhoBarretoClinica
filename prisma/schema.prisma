@@ -66,5 +66,4 @@ model Agendamento {
   pacienteId      Int     
   procedimentoId  Int
   planoDeSaudeId  Int
-  dia             DateTime      @db.DateTime() 
 }

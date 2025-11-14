@@ -9,7 +9,6 @@ class AgendamentoService {
         pacienteId: payload.pacienteId,
         procedimentoId: payload.procedimentoId,
         planoDeSaudeId: payload.planoDeSaudeId,
-        dia: payload.dia,
       },
     });
 
@@ -24,7 +23,6 @@ class AgendamentoService {
         paciente: true,
         procedimento: true,
         planoDeSaude: true,
-        dia: true,
       },
     });
 
